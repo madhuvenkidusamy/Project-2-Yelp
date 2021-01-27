@@ -220,7 +220,7 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
 
     // Update the restyled plot's values
     function updatePlotly(newdata1, newdata2) {
-    Plotly.restyle("bar1", "x", newdata1, "y", newdata2);
+    Plotly.restyle("bar1", "x", [newdata1], "y", [newdata2]);
     }
 
     init();
@@ -338,7 +338,7 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
 
     // Update the restyled plot's values
     function updatePlotly(newdata3, newdata4) {
-    Plotly.restyle("bar2", "x", newdata3, "y", newdata4);
+    Plotly.restyle("bar2", "x", [newdata3], "y", [newdata4]);
     }
 
     init1();
@@ -378,9 +378,9 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
         type: "bar",
         orientation: "v"
         };
-        //data
+    //data
     var barData4 = [trace4];
-        //layout
+    //layout
     var layout4 = {
         margin: {
             l:100,
@@ -398,10 +398,11 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
     // Function called by DOM changes
     function getData3() {
     var dropdownMenu5 = d3.select("#selDataset5");
-    
+    console.log(dropdownMenu5);
     // Assign the value of the dropdown menu option to a variable
     
     var dataset5 = dropdownMenu5.property("value");
+    console.log(dataset5);
     // Initialize an empty array for the country's data
     var barData4 = [];
     data.forEach(function(d){
@@ -409,25 +410,51 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
         barData4.push(d.location)
 
     })
+    console.log(barData4);
     const map4 = barData4.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
     keys = map4.keys(barData4);
-    //console.log(cat2)
+    console.log(keys)
     value = map4.values(barData4)
-    //console.log(quant2)
-    var arr5 = Array.from(map4.entries());
-    //console.log(arr5)
-    var citiesrating1 = arr5.map(function(value,index) {return value[0]; });
-    //console.log(citiesrating);
-    var quantityrating1 = arr5.map(function(value,index) {return value[1]; });
-    //console.log(quantityrating);
+    console.log(value)
+    var arr5 = Array.from(keys);
+    var arr6 = Array.from(value);
+    console.log(arr5)
+    console.log(arr6)
+    // var citiesrating1 = arr5.map(function(value,index) {return value[0]; });
+    // console.log(citiesrating);
+    // var quantityrating1 = arr5.map(function(value,index) {return value[1]; });
+    // console.log(quantityrating);
 
-    updatePlotly3(citiesrating1, quantityrating1);
+    //updatePlotly3(arr5, arr6);
+    // trace
+    var trace5 = {
+        x: arr5,
+        y: arr6,
+        //text: reversedLabels,
+        type: "bar",
+        orientation: "v"
+        };
+    //data
+    var barData5 = [trace5];
+    //layout
+    var layout5 = {
+        margin: {
+            l:100,
+            r:100,
+            t:100,
+            b:100
+        }
+    };
+            
+    Plotly.newPlot("bar3", barData5, layout5);
     }
 
     // Update the restyled plot's values
-    function updatePlotly3(newdata5, newdata6) {
-    Plotly.restyle("bar3", "x", newdata5, "y", newdata6);
-    }
+    //function updatePlotly3(newdata5, newdata6) {
+    //console.log(newdata5, newdata6);
+    //Plotly.restyle("bar3", "x", [newdata5], "y", [newdata6]);
+    //}
+    
     //Scatter price-rating
     var ratings = []
     data.forEach(function(d){
