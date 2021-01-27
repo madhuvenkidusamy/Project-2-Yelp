@@ -113,14 +113,16 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
         var dropdownMenu2 = d3.select("#selDataset2");
         // Assign the value of the dropdown menu option to a variable
         var dataset1 = dropdownMenu1.property("value");
+        //var dataset1 = "Phoenix"
         console.log(dataset1)
         var dataset2 = dropdownMenu2.property("value");
+        //var dataset2 = 4.5;
         console.log(dataset2)
         // Initialize an empty array for the country's data
         var data1 = [];
         data.forEach(function(d) {
-            if (data.location == dataset1 && data.rating == dataset2)
-            data1.push(data.category)
+            if (d.location == dataset1 && d.rating == dataset2)
+            data1.push(d.category)
         })
         console.log(data1)
         const map = data1.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
@@ -186,8 +188,8 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
     // Initialize an empty array for the country's data
     var barData = [];
     data.forEach(function(d) {
-        if (data.location == dataset1 && data.rating == dataset2)
-        barData.push(data.category)
+        if (d.location == dataset1 && d.rating == dataset2)
+        barData.push(d.category)
     })
     //console.log(barData)
     const map9 = barData.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
@@ -213,15 +215,36 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
 
     var reversedQuantity9 = slicedQuantity9.reverse();
     var reversedCategories9 = slicedCategories9.reverse();
+    console.log(reversedQuantity9)
+    console.log(reversedCategories9)
     //var reversedLabels = slicedLabels.reverse();
-
-    updatePlotly(reversedQuantity9, reversedCategories9);
+    // trace
+    var trace9 = {
+        x: reversedQuantity9,
+        y: reversedCategories9,
+        //text: reversedLabels,
+        type: "bar",
+        orientation: "h"
+        };
+        //data
+        var barData9 = [trace9];
+        //layout
+        var layout9 = {
+            margin: {
+                l:100,
+                r:100,
+                t:100,
+                b:100
+            }
+        };
+    Plotly.newPlot("bar1", barData9, layout9);
+    //updatePlotly(reversedQuantity9, reversedCategories9);
     }
 
     // Update the restyled plot's values
-    function updatePlotly(newdata1, newdata2) {
-    Plotly.restyle("bar1", "x", [newdata1], "y", [newdata2]);
-    }
+    //function updatePlotly(newdata1, newdata2) {
+    //Plotly.restyle("bar1", "x", [newdata1], "y", [newdata2]);
+    //}
 
     init();
 
@@ -237,8 +260,8 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
         // Initialize an empty array for the country's data
         var data2 = [];
         data.forEach(function(d) {
-            if (data.location == dataset3 && data.rating == dataset4)
-            data2.push(data.category)
+            if (d.location == dataset3 && d.rating == dataset4)
+            data2.push(d.category)
         })
         console.log(data2)
         const map = data2.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
@@ -304,8 +327,8 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
     // Initialize an empty array for the country's data
     var barData2 = [];
     data.forEach(function(d) {
-        if (data.location == dataset3 && data.rating == dataset4)
-        barData2.push(data.category)
+        if (d.location == dataset3 && d.rating == dataset4)
+        barData2.push(d.category)
     })
     //console.log(barData)
     const map8 = barData2.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
@@ -332,14 +355,34 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
     var reversedQuantity8 = slicedQuantity8.reverse();
     var reversedCategories8 = slicedCategories8.reverse();
     //var reversedLabels = slicedLabels.reverse();
-
-    updatePlotly(reversedQuantity8, reversedCategories8);
+    // trace
+    var trace8 = {
+        x: reversedQuantity8,
+        y: reversedCategories8,
+        //text: reversedLabels,
+        type: "bar",
+        orientation: "h"
+        };
+        //data
+        var barData8 = [trace8];
+        //layout
+        var layout8 = {
+            margin: {
+                l:100,
+                r:100,
+                t:100,
+                b:100
+            }
+        };
+        
+        Plotly.newPlot("bar2", barData8, layout8);
+    //updatePlotly(reversedQuantity8, reversedCategories8);
     }
 
     // Update the restyled plot's values
-    function updatePlotly(newdata3, newdata4) {
-    Plotly.restyle("bar2", "x", [newdata3], "y", [newdata4]);
-    }
+    //function updatePlotly(newdata3, newdata4) {
+    //Plotly.restyle("bar2", "x", [newdata3], "y", [newdata4]);
+    //}
 
     init1();
 
