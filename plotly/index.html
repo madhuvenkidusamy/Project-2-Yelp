@@ -7,35 +7,37 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Yelp Comparisson</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body>
-
+  <div class="wrapper">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">Yelp Dataset Analysis
+            <img class="nav-yelp" src="static/images/Yelp_trademark_RGB_outline.0.jpg">
+          </a>
+        </div>
+      </div>
+    </nav>
+    
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
-        <h1>Yelp: Analysis on xxxx restaurants from some of the main cities in the US</h1>
-        <p>Use the interactive charts below to explore the dataset</p>
+        <div class="hero text-center"></div>
+          <h1>Yelp: Analysis on xxxx restaurants from some of the main cities in the US</h1>
+          <p>Use the interactive charts below to explore the dataset</p>
       </div>
     </div>
     <div class="row">
-      <!--<div class="col-md-2">
-        <div class="well">
-          <h5>City:</h5>
-          <select id="selDataset1" onchange="optionChanged(this.value)"></select>
-        </div>
-        <div class="well">
-          <h5>Rating:</h5>
-          <select id="selDataset2" onchange="optionChanged(this.value)"></select>
-        </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Demographic Info</h3>
-          </div>
-          <div id="sample-metadata" class="panel-body"></div>
-        </div> -->
+      
       </div>
       <div class="col-md-6">
+        <div class="well">
+            <h5>Select city and rating to compare categories</h5>
+        </div>
         <div class="well">
             <h5>City:</h5>
             <select id="selDataset1" onchange="getData(this.value)"></select>
@@ -47,6 +49,9 @@
         <div id="bar1"></div>
       </div>
       <div class="col-md-6">
+        <div class="well">
+          <h5>Select city and rating to compare categories</h5>
+      </div>
         <div class="well">
             <h5>City:</h5>
             <select id="selDataset3" onchange="getData2(this.value)"></select>
@@ -61,6 +66,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well">
+                <h5>Select rating to display cities and quantities</h5>
                 <h5>Rating:</h5>
                 <select id="selDataset5" onchange="getData3(this.value)"></select>
             </div> 
@@ -69,15 +75,19 @@
       </div>
     <div class="row">
       <div class="col-md-12">
+        <div class="well"></div>
         <div id="scatter"></div>
+        
       </div>
     </div>
+    <footer class="footer">
+      <span class="bottom">Yelp Dataset Analysis</span>
+    </footer>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="./static/js/app.js"></script>
-  <!--<script src="./static/js/bonus.js"></script> -->
   <script src="records.csv"></script>
   
 </body>

@@ -40,16 +40,10 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
         selectBox.append("option").text(rating1[i]);
     }
     // Set dropdown3
-    var cities2 = []
-    data.forEach(function(d){
-        
-        if (cities2.includes(d.location) === false) 
-        cities2.push(d.location);
-
-    });
-    for (var i = 0; i < cities2.length; i++) {
+    
+    for (var i = 0; i < cities1.length; i++) {
         selectBox = d3.select("#selDataset3");
-        selectBox.append("option").text(cities2[i]);
+        selectBox.append("option").text(cities1[i]);
     }
     // Set dropdown4
     
@@ -57,22 +51,7 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
         selectBox = d3.select("#selDataset4");
         selectBox.append("option").text(rating1[i]);
     }
-    //var categories = []
-    //data.forEach(function(d){
-        
-        //if (categories.includes(d.category) === false) 
-        //categories.push(d.category);
-
-    //});
-    //console.log(categories)
-
-    //var quantity = []
-    //data.forEach(function(d) {
-        //if (data.category[i] == categories[i]) {
-            //quantity.push()
-        //}
-    //});
-    //console.log(quantity)
+    
     var allCategories = []
     data.forEach(function(d){
         
@@ -98,13 +77,6 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
     console.log(quantity);
    
 
-    //quantity = {};
-    //for(var i=1; i<categories.length; ++i) {
-        //if(!quantity[categories[i]])
-            //quantity[categories[i]] = 0;
-            //++quantity[categories[i]];
-    //}
-    //console.log(quantity);
     // Default Plot
     
     function init() {
@@ -113,10 +85,10 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
         var dropdownMenu2 = d3.select("#selDataset2");
         // Assign the value of the dropdown menu option to a variable
         var dataset1 = dropdownMenu1.property("value");
-        //var dataset1 = "Phoenix"
+        
         console.log(dataset1)
         var dataset2 = dropdownMenu2.property("value");
-        //var dataset2 = 4.5;
+        
         console.log(dataset2)
         // Initialize an empty array for the country's data
         var data1 = [];
@@ -159,7 +131,10 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
         y: reversedCategories,
         //text: reversedLabels,
         type: "bar",
-        orientation: "h"
+        orientation: "h",
+        marker:{
+            color: 'rgba(222,45,38,0.8)'
+          }
         };
         //data
         var barData = [trace1];
@@ -170,14 +145,24 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
                 r:100,
                 t:100,
                 b:100
+            },
+            xaxis: {
+                title: {
+                  text: 'Quantity'
+                }
+            },
+            yaxis: {
+                title: {
+                  text: 'Category'
+                }
             }
         };
         
         Plotly.newPlot("bar1", barData, layout);
     }
     // On change to the DOM, call getData()
-    d3.selectAll("#selDataset1","#selDataset2").on("change", getData);
-
+    d3.selectAll("#selDataset1").on("change", getData);
+    d3.selectAll("#selDataset2").on("change", getData);
     // Function called by DOM changes
     function getData() {
     var dropdownMenu1 = d3.select("#selDataset1");
@@ -224,7 +209,10 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
         y: reversedCategories9,
         //text: reversedLabels,
         type: "bar",
-        orientation: "h"
+        orientation: "h",
+        marker:{
+            color: 'rgba(222,45,38,0.8)'
+          }
         };
         //data
         var barData9 = [trace9];
@@ -235,16 +223,23 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
                 r:100,
                 t:100,
                 b:100
+            },
+            xaxis: {
+                title: {
+                  text: 'Quantity'
+                }
+            },
+            yaxis: {
+                title: {
+                  text: 'Category'
+                }
             }
         };
     Plotly.newPlot("bar1", barData9, layout9);
-    //updatePlotly(reversedQuantity9, reversedCategories9);
+    
     }
 
-    // Update the restyled plot's values
-    //function updatePlotly(newdata1, newdata2) {
-    //Plotly.restyle("bar1", "x", [newdata1], "y", [newdata2]);
-    //}
+    
 
     init();
 
@@ -298,7 +293,10 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
         y: reversedCategories3,
         //text: reversedLabels,
         type: "bar",
-        orientation: "h"
+        orientation: "h",
+        marker:{
+            color: 'rgba(222,45,38,0.8)'
+          }
         };
         //data
         var barData2 = [trace2];
@@ -309,14 +307,24 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
                 r:100,
                 t:100,
                 b:100
+            },
+            xaxis: {
+                title: {
+                  text: 'Quantity'
+                }
+            },
+            yaxis: {
+                title: {
+                  text: 'Category'
+                }
             }
         };
         
         Plotly.newPlot("bar2", barData2, layout2);
     }
     // On change to the DOM, call getData()
-    d3.selectAll("#selDataset3","#selDataset4").on("change", getData2);
-
+    d3.selectAll("#selDataset3").on("change", getData2);
+    d3.selectAll("#selDataset4").on("change", getData2);
     // Function called by DOM changes
     function getData2() {
     var dropdownMenu3 = d3.select("#selDataset3");
@@ -361,7 +369,10 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
         y: reversedCategories8,
         //text: reversedLabels,
         type: "bar",
-        orientation: "h"
+        orientation: "h",
+        marker:{
+            color: 'rgba(222,45,38,0.8)'
+          }
         };
         //data
         var barData8 = [trace8];
@@ -372,17 +383,24 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
                 r:100,
                 t:100,
                 b:100
+            },
+            xaxis: {
+                title: {
+                  text: 'Quantity'
+                }
+            },
+            yaxis: {
+                title: {
+                  text: 'Category'
+                }
             }
         };
         
         Plotly.newPlot("bar2", barData8, layout8);
-    //updatePlotly(reversedQuantity8, reversedCategories8);
+    
     }
 
-    // Update the restyled plot's values
-    //function updatePlotly(newdata3, newdata4) {
-    //Plotly.restyle("bar2", "x", [newdata3], "y", [newdata4]);
-    //}
+    
 
     init1();
 
@@ -419,7 +437,10 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
         y: quantityrating,
         //text: reversedLabels,
         type: "bar",
-        orientation: "v"
+        orientation: "v",
+        marker:{
+            color: 'rgba(219, 64, 82, 0.7)'
+          }
         };
     //data
     var barData4 = [trace4];
@@ -430,6 +451,16 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
             r:100,
             t:100,
             b:100
+        },
+        xaxis: {
+            title: {
+              text: 'Location'
+            }
+        },
+        yaxis: {
+            title: {
+              text: 'Quantity'
+            }
         }
     };
             
@@ -468,14 +499,17 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
     // var quantityrating1 = arr5.map(function(value,index) {return value[1]; });
     // console.log(quantityrating);
 
-    //updatePlotly3(arr5, arr6);
+    
     // trace
     var trace5 = {
         x: arr5,
         y: arr6,
         //text: reversedLabels,
         type: "bar",
-        orientation: "v"
+        orientation: "v",
+        marker:{
+            color: 'rgba(219, 64, 82, 0.7)'
+          }
         };
     //data
     var barData5 = [trace5];
@@ -492,11 +526,7 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
     Plotly.newPlot("bar3", barData5, layout5);
     }
 
-    // Update the restyled plot's values
-    //function updatePlotly3(newdata5, newdata6) {
-    //console.log(newdata5, newdata6);
-    //Plotly.restyle("bar3", "x", [newdata5], "y", [newdata6]);
-    //}
+    
     
     //Scatter price-rating
     var ratings = []
@@ -515,32 +545,40 @@ d3.csv("/Documents/Project-2-Yelp/plotly/data/records.csv").then((data) => {
     });
     console.log(prices)
     
-    trace3 = {
+    trace10 = {
         x: ratings,
         y: prices,
         mode: 'markers',
-        type: 'scatter',
+        //type: 'scatter',
         marker: { 
-            size: 12
+            color: ratings,
+            size: ratings*1000,
             //opacity: [1, 0.8, 0.6, 0.4]
         }
     };
 
-    var data3 = [trace3];
+    var data10 = [trace10];
 
-    var layout = {
+    var layout10 = {
+        title: 'Rating vs Price',
+        showlegend: false,
+        height: 500,
+        width: 1100,
         xaxis: {
-            range: [0, 6],
-            label: "Rating"
+            range: [5.5],
+            title: {
+              text: 'Rating'
+            }
         },
         yaxis: {
-            range: [0, 5],
-            label: "Price"
-        },
+            range: [0,5],
+            title: {
+              text: 'Price'
+            }
+        }
         
-        title: 'Price vs Rating'
     };
-    Plotly.newPlot("scatter", data3, layout);
+    Plotly.newPlot("scatter", data10, layout10);
 
 
 });
