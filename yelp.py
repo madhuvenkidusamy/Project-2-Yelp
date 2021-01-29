@@ -6,6 +6,8 @@ from yelpapi import YelpAPI
 import pandas as pd
 import requests
 
+from sqlalchemy import create_engine
+
 
 # Set up Yelp API Key
 client_id = 'QFEVJMDVtV4QHEUVepKk1w'
@@ -66,12 +68,21 @@ df.loc[df['price'] == '$$', 'price'] = 2
 df.loc[df['price'] == '$$$', 'price'] = 3
 df.loc[df['price'] == '$$$$', 'price'] = 4
 
+# Cleaning cities list
+df.loc[df['location'] == 'Ft Worth', 'location'] = 'Fort Worth'
+df.loc[df['location'] == 'Brooklyn', 'location'] = 'New York'
+df.loc[df['location'] == 'Jackson Heights', 'location'] = 'New York'
+df.loc[df['location'] == 'Campbell', 'location'] = 'San Jose'
+
+
+# Drop duplicates
+df.drop_duplicates()
 
 
 # # Convert dataframe to CSV
 # df.to_csv('/Users/madhuvenkidusamy/Documents/Data Science Bootcamp/Project-2-Yelp/records.csv', index = False, header = True)
 
 
-# # Connect dataframe to postgres
-# engine = create_engine("postgres://madhuvenkidusamy:blend62@localhost:5432/postgres")
-# df.to_sql('yelp_records', con=engine, index=True, if_exists='replace')
+# Connect dataframe to postgres
+engine = create_engine("postgres://madhuvenkidusamy:blend62@localhost:5432/yelp")
+df.to_sql('yelp_records', con=engine, index=True, if_exists='replace')
