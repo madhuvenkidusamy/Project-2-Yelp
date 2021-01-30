@@ -1,7 +1,7 @@
-console.log('hello', data);
+//console.log('hello', data);
 
 // Use D3 to read in records.csv
-
+d3.csv("data/records.csv").then((data) => {
     data.forEach(function(d) {
         d.review_count = +d.review_count;
         d.latitude = +d.latitude;
@@ -580,3 +580,4 @@ console.log('hello', data);
         
     };
     Plotly.newPlot("scatter", data10, layout10);
+});

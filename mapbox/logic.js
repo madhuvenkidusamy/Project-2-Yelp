@@ -1,7 +1,7 @@
 //console.log('hello', data);
 
 // Use D3 to read in records.csv
-//d3.csv("/Documents/Project-2-Yelp/mapbox/records.csv").then((data) => {
+d3.csv("records.csv").then((data) => {
     data.forEach(function(d) {
         d.review_count = +d.review_count;
         d.latitude = +d.latitude;
@@ -124,4 +124,4 @@
     collapsed: false
   }).addTo(myMap);
   
-//});
+});

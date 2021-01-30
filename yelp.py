@@ -84,5 +84,5 @@ df.drop_duplicates()
 
 
 # Connect dataframe to postgres
-engine = create_engine("postgres://madhuvenkidusamy:blend62@localhost:5432/yelp")
-df.to_sql('yelp_records', con=engine, index=True, if_exists='replace')
+engine = create_engine("postgres://postgres:password@localhost:5432/Project-2-Yelp")
+df.to_sql('yelp_cities', con=engine, index=True, if_exists='replace')
