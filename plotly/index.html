@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
   <link rel="stylesheet" href="static/css/style.css">
+  <script src='elevator.js'></script>
 </head>
 
 <body>
@@ -80,14 +81,33 @@
         
       </div>
     </div>
-    <footer class="footer">
-      <span class="bottom">Yelp Dataset Analysis</span>
-    </footer>
+
+    <div class="footer">
+        <div class="elevator-button">
+            Back to Top
+        </div>
+    </div>
+
   </div>
 
-  <!-- <script>
-    var data = JSON.parse('{{data | tojson}}');
-  </script> -->
+
+
+  <script>
+    // Elevator script included on the page, already.
+    window.onload = function() {
+      var elevator = new Elevator({
+        element: document.querySelector('.elevator-button'),
+        duration: 1000 // milliseconds
+      });
+    }
+  </script>
+
+
+
+
+  <!-- // <script>
+  //   var data = JSON.parse('{{data | tojson}}');
+  // </script> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
